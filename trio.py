@@ -1,5 +1,5 @@
-from measures import menuetMeasures
-from measuretable import menuetTable
+from measures import measures
+from measuretable import mtable
 from random import randint
 from bottle import SimpleTemplate
 

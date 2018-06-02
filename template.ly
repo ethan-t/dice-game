@@ -3,9 +3,10 @@
 \header {
   title = "Minuet"
   composer = "Maximilian Stadler"
+  tagline = ""
 }
 
-upper = \relative c'' {
+upper = \relative c''' {
   \clef treble
   \key d \major
   \time 3/4
@@ -13,6 +14,7 @@ upper = \relative c'' {
   % for measure in treble:
   measure
   % end
+
 }
 
 lower = \relative c {
@@ -23,6 +25,7 @@ lower = \relative c {
   % for measure in bass:
   measure
   % end
+  
 }
 
 \score {
@@ -31,4 +34,5 @@ lower = \relative c {
     \new Staff = "lower" \lower
   >>
   \layout { }
+  \midi { }
 }
