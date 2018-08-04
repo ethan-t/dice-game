@@ -7,13 +7,23 @@ with open("template.ly", "r") as f:
   template = f.read()
 
 def rollDice():
-  return randint(1, 6) + randint(1, 6)
+  return randint(1, 12) # Not really a dice roll
 
-def getMeasure(measure, result):
-  return mtable[measure][result-2]
+def chooseMeasure(measure, result):
+  return menuetTable[measure][result-2]
+
+def getMeasure(measure):
+    return menuetMeasures[measure]
 
 def composeMusic():
+  measureResult = []
   for i in range(1, 17):
-    print(getMeasure(i, rollDice()))
+    measureResult.append(chooseMeasure(i, rollDice()))
+  return measureResult
 
-composeMusic()
+def writeMusic(measures):
+  bassMeasures = [getMeasure(x)[0].decode('utf-8') for x in measures]
+  trebleMeasures = [getMeasure(x)[1].decode('utf-8') for x in measures]
+  return SimpleTemplate(template).render(treble=trebleMeasures, bass=bassMeasures)
+
+print(writeMusic(composeMusic()))
